@@ -12,7 +12,6 @@ const server = net.createServer((socket) => {
     // console.log('client connected');
     // console.log('data:', data);
     
-
     socket.on('data', data => {
         // console.log('client disconnected');
         // console.log('data:', data.toString().split(' ')[0]);
@@ -26,14 +25,15 @@ const server = net.createServer((socket) => {
                 socket.write(`HTTP/1.1 \n\n <html>${getHydrogen}<html>`);
             }else if(address === '/helium.html'){
                 socket.write(`HTTP/1.1 \n\n <html>${getHelium}<html>`);
+            }else{
+                socket.write(`HTTP/1.1 \n\n <html>${get404}<html>`);
             }
         }
-       
-    socket.write(page.home);
+    socket.write(`HTTP/1.1 \n\n <html>${getStyles}<html>`);
+    //socket.write(getHome);
     socket.end();
 
     });
-
   });
 
 
