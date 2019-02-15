@@ -29,7 +29,7 @@ const server = net.createServer((socket) => {
                 socket.write(`HTTP/1.1 \n\n <html>${get404}<html>`);
             }
         }
-    socket.write(`HTTP/1.1 \n\n <html>${getStyles}<html>`);
+    socket.write(`<html><link href=${getStyles} type='text/css' rel='stylesheet'><html>`);
     //socket.write(getHome);
     socket.end();
 
